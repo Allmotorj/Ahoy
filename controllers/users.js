@@ -7,7 +7,7 @@ const User = require("../models/User")
 // }
   
 function dash(req, res, next) {
-    res.render('users/dashboard', { title: 'Ahoy'} )
+    res.render('dashboard/dashboard', { title: 'Ahoy'} )
 }
 
 
