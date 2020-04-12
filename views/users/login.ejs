@@ -1,0 +1,32 @@
+<%- include('../partials/header') %>
+<% if (false) { %>
+<h1>You're logged in!</h1>
+<a href="/users/logout">Log Out</a>
+<% } else { %>
+	<div id="box">
+		<section class="container-section">
+			<h1 class="greet">Welcome</h1>
+			<h2 class="please-signin">Please sign in below.</h2>
+			<!-- Apple button -->
+			<div 
+				id="apple-button" 
+				class="signin-button-container"
+			>
+				<a href="/auth/apple">
+                    Apple Login
+				</a>
+			</div>
+			<!-- Google Button -->
+			<div 
+				id="google-button" 
+				class="signin-button-container"
+			>
+                <a href="/auth/google">
+                    Google Login
+				</a>
+			</div>
+		</section>
+	</div>
+<% } %>
+		
+<%- include('../partials/footer') %>
