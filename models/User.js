@@ -1,18 +1,15 @@
 var mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var factSchema = new mongoose.Schema({
-  text: String
-}, {
-  timestamps: true
-});
-
-var userSchema = new mongoose.Schema({
+var userSchema = new Schema({
   name: String,
   email: String,
   cohort: String,
   avatar: String,
-  facts: [factSchema],
+  questions: [{type: Schema.Types.ObjectId, ref: 'Question'}],
   googleId: String,
+  facebookId: String,
+  
 }, {
   timestamps: true
 });

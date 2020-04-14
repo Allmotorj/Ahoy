@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>User Questions</title>
+  <!-- Google Icon Fonts used by Materialize -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Materialize CSS Framework -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="stylesheets/style.css" />
+  <!-- JavaScript for Materialize -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <a href="/users/dashboard" class="brand-logo left">User Dashboard</a>
+      <ul class="right">
+        <li><%= user ? `Logged in as: ${user.name}` : "Not Logged In" %></li>
+      </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="container">
+    <div id="search-row" class="row">
+      <h2 class="col s4 blue-grey-text text-darken-2">Questions</h2>
+      <form action="/students" method="GET">
+        <div class="col s3 offset-s3">
+          <!-- search -->
+      </form>
+    </div>
+    <div class="row">
+      <div id="students" class="col s12">
+        <% users.forEach(function(user) { %>
+          <div class="card blue-grey">
+            <div class="card-content white-text">
+              <div>
+                <span class="card-title">
+                  <i class="small material-icons">perm_identity</i>
+                  <span class="student-name"><%= user.name %></span>
+                  
+                </span>
+              </div>
+              <ul class="collection">
+                <% user.questions.forEach(function(ques) { %>
+                <li class="collection-item blue-grey-text text-darken-2">
+                  <span class="title"><%- ques.text %></span>
+                  <div class="card-action">
+                    <form action="/users/board/<%= ques._id %>/answer" method="POST">
+                      <input type="text" name="text" class="black-text">
+                      <button type="submit" class="btn white-text">Answer</button>
+                    </form>
+                  </div>
+              </li>
+                <% }) %>
+              </ul>
+            </div>
+          </div>
+          <% }) %>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

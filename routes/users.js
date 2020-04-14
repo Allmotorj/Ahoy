@@ -1,17 +1,22 @@
-var express = require('express');
-var router = express.Router();
+var router = require('express').Router();
 const usersCtrl = require('../controllers/users')
 
 
-router.get('/dashboard', usersCtrl.dash);
+const isLoggedIn = (req, res, next) =>{
+  if(req.isAuthenticated()) return next();
+  res.redirect('/login');
+};
 
 
-router.get("/logout", function(req, res) {
-  req.logout();
-  res.redirect("/");
-});
+router.get('/board', isLoggedIn, usersCtrl.board);
+router.get('/dashboard', isLoggedIn, usersCtrl.dash);
 
+
+router.delete('/questions/:id', isLoggedIn, usersCtrl.delQuestion);
+router.post('/questions', isLoggedIn, usersCtrl.addQuestion);
+router.post('/board/:id/answer', isLoggedIn, usersCtrl.addAns);
 
 module.exports = router;
 
 
+// router.post('/facts', (req, res) => {res.send('this is the facts page!')})

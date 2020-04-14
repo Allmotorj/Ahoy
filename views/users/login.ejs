@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-<% if (true) { %>
+<% if (false) { %>
 <h1>You're logged in!</h1>
 <a href="/users/logout">Log Out</a>
 <% } else { %>
@@ -23,6 +23,14 @@
 			>
                 <a href="/auth/google">
                     Google Login
+				</a>
+			</div>
+			<div 
+				id="faceboonk-button" 
+				class="signin-button-container"
+			>
+                <a href="/auth/facebook">
+                    Facebook Login
 				</a>
 			</div>
 		</section>

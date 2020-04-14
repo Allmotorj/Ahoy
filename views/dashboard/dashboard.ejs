@@ -1,7 +1,54 @@
 <%- include('../partials/header') %>
-    <h1>This is the user Dashboard</h1>
+    
+    <div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper">
+            <a href="/users/board" class="brand-logo left">Dashboard</a>
+          <ul class="right">
+            <li>
+                <% if (user) { %>
+                <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+                <% } else { %>
+                <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
+                <% } %>
+              </li>
+            <li><%= user ? `Logged in as: ${user.name}` : "Not Logged In" %></li>
+          </ul>
+          </div>
+        </nav>
+      </div>
+   <div id="students" class="col s12">
+        
+          <div class="card blue-grey">
+            <div class="card-content white-text">
+              <div>
+                <span class="card-title">
+                  <i class="small material-icons">perm_identity</i>
+                  <span class="student-name"><%= user.name %></span>
+                  
+                </span>
+              </div>
+              <ul class="collection">
+                <% user.questions.forEach(function(ques) { %>
+                <li class="collection-item blue-grey-text text-darken-2">
+                  <span class="title"><%- ques.text %></span>
+                  <% if (user._id.equals(user && user._id)) { %>
+                  <form action="/users/questions/<%= ques._id %>?_method=DELETE" method="POST" class="secondary-content">
+                  <button type="submit" class="btn-small red-text">X</button></li>
+                </form>
+                <% } %>
+              </li>
+                <% }) %>
+              </ul>
+              <% if (user._id.equals(user && user._id)) { %>
+                <div class="card-action">
+                  <form action="/users/questions" method="POST">
+                    <input type="text" name="text" class="white-text">
+                    <button type="submit" class="btn white-text">Add Question</button>
+                  </form>
+                </div>
+              <% } %>
+            </div>
+          </div>   
 
-    <form action="/users/logout">
-        <button type="submit">Logout</button>
-    </form>
 <%- include('../partials/footer') %>
