@@ -27,25 +27,24 @@ function board(req, res, next) {
     });
 }
 
-function addQuestion(req, res, next){
-  console.log(req.user)
-  console.log(req.params)
-  console.log(req.body)
-  console.log(req.query)
+// function addQuestion(req, res, next){
+//   console.log(req.user)
+//   console.log(req.params)
+//   console.log(req.body)
+//   console.log(req.query)
+//   // req.user.Question.questions.push(req.body)
+//   // req.user.save(function(err) 
+//   {
+//     res.redirect('/users/dashboard')
+//   }
   
-  // req.user.Question.questions.push(req.body)
-  // req.user.save(function(err) 
-  {
-    res.redirect('/users/dashboard')
-  }
-  
-}
+// }
 
-// function addQuestion(req, res, next) {
-//     req.user.questions.push(req.body);
-//     req.user.save(function(err) {
-//       res.redirect('/users/dashboard');
-//     });}
+function addQuestion(req, res, next) {
+    req.user.questions.push(req.body);
+    req.user.save(function(err) {
+      res.redirect('/users/dashboard');
+    });}
 
 function delQuestion(req, res, next) {User.findOne({
   'questions._id': req.params.id}, function(err, user) {
@@ -60,9 +59,10 @@ const addAns = (req, res) => {
     Question.findById(req.params.id, function(err, user) {
       // req.params.id.push(req.body);
       // req.user.save(function(err))
-      //   //console.log(req.user)
-      //   console.log(req.params.id)
-      //   console.log(req.body)
+  console.log(req.user)
+  console.log(req.params)
+  console.log(req.body)
+  console.log(req.query) 
         // req.body.userId = req.user._id;
         // req.body.userName = req.user.name;
         // user.answer.push(req.body);
