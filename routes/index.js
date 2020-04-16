@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get("/login", function(req, res, next) {
-  res.render("users/login", { title: "Ahoy Login" });
+  res.render("questions/login", { title: "Ahoy Login" });
 });
 
 
@@ -30,7 +30,7 @@ router.get('/auth/facebook', passport.authenticate('facebook'));
 
 router.get('/auth/facebook/callback',
   passport.authenticate('facebook', {
-    successRedirect: '/users/board',
+    successRedirect: '/questions/board',
     failureRedirect: '/', 
   })
 );
@@ -38,7 +38,7 @@ router.get('/auth/facebook/callback',
 router.get(
   "/oauth2callback",
   passport.authenticate("google", {
-    successRedirect: "/users/board",
+    successRedirect: "/questions/board",
     failureRedirect: "/",
   })
 );

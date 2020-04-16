@@ -15,11 +15,18 @@
 <body>
   <div class="navbar-fixed">
     <nav>
-      <div class="nav-wrapper">
-        <a href="/users/dashboard" class="brand-logo left">User Dashboard</a>
-      <ul class="right">
-        <li><%= user ? `Logged in as: ${user.name}` : "Not Logged In" %></li>
-      </ul>
+      <div class="nav-wrapper green lighten-1 ">
+        <a href="/questions/dashboard" class="brand-logo left">User Dashboard</a>
+        <ul class="right">
+          <li>
+              <% if (user) { %>
+              <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+              <% } else { %>
+              <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
+              <% } %>
+            </li>
+          <li><%= user ? `Logged in as: ${user.name}` : "Not Logged In" %></li>
+        </ul>
       </div>
     </nav>
   </div>
@@ -33,8 +40,9 @@
     </div>
     <div class="row">
       <div id="students" class="col s12">
+    
         <% users.forEach(function(user) { %>
-          <div class="card blue-grey">
+          <div class="card blue indigo accent-1">
             <div class="card-content white-text">
               <div>
                 <span class="card-title">
@@ -44,21 +52,31 @@
                 </span>
               </div>
               <ul class="collection">
-                <% user.questions.forEach(function(ques) { %>
+                <% user.questions.forEach(function(question) { %>
                 <li class="collection-item blue-grey-text text-darken-2">
-                  <span class="title"><%- ques.text %></span>
+                  <span class="title"><%- question.text %></span>
+
+                  <% question.answers.forEach(function(answer) { %>
+                      <li class="collection-item blue-grey-text text-darken-2">
+                       <span class="title"><%= answer.text %> <b>submitted by</b>
+                        <%= answer.userName %></span>
+                      </li>
+                  <% }) %>
+
                   <div class="card-action">
-                    <form action="/users/board/<%= ques._id %>/answer" method="POST">
+                    <form action="/questions/board/<%= question._id %>/answer" method="POST">
                       <input type="text" name="text" class="black-text">
-                      <button type="submit" class="btn white-text">Answer</button>
+                      <button type="submit" class="btn green lighten-1 white-text">Answer</button>
                     </form>
                   </div>
               </li>
-                <% }) %>
+              <% }) %>
+
               </ul>
             </div>
           </div>
           <% }) %>
+          
       </div>
     </div>
   </div>

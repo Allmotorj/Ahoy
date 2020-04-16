@@ -2,8 +2,8 @@
     
     <div class="navbar-fixed">
         <nav>
-          <div class="nav-wrapper">
-            <a href="/users/board" class="brand-logo left">Dashboard</a>
+          <div class="nav-wrapper green lighten-1">
+            <a href="/questions/board" class="brand-logo left">Dashboard</a>
           <ul class="right">
             <li>
                 <% if (user) { %>
@@ -19,7 +19,7 @@
       </div>
    <div id="students" class="col s12">
         
-          <div class="card blue-grey">
+          <div class="card blue indigo accent-1">
             <div class="card-content white-text">
               <div>
                 <span class="card-title">
@@ -28,12 +28,13 @@
                   
                 </span>
               </div>
-              <ul class="collection">
+              <ul class="collection ">
                 <% user.questions.forEach(function(ques) { %>
                 <li class="collection-item blue-grey-text text-darken-2">
                   <span class="title"><%- ques.text %></span>
                   <% if (user._id.equals(user && user._id)) { %>
-                  <form action="/users/questions/<%= ques._id %>?_method=DELETE" method="POST" class="secondary-content">
+                  <a href="/questions/edit/<%= ques._id %>/" class="right">Edit</a>
+                  <form action="/questions/questions/<%= ques._id %>?_method=DELETE" method="POST" class="secondary-content">
                   <button type="submit" class="btn-small red-text">X</button></li>
                 </form>
                 <% } %>
@@ -42,7 +43,7 @@
               </ul>
               <% if (user._id.equals(user && user._id)) { %>
                 <div class="card-action">
-                  <form action="/users/questions" method="POST">
+                  <form action="/questions/questions" method="POST">
                     <input type="text" name="text" class="white-text">
                     <button type="submit" class="btn white-text">Add Question</button>
                   </form>

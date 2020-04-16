@@ -1,5 +1,5 @@
 var router = require('express').Router();
-const usersCtrl = require('../controllers/users')
+const questionsCtrl = require('../controllers/questions')
 
 
 const isLoggedIn = (req, res, next) =>{
@@ -8,13 +8,15 @@ const isLoggedIn = (req, res, next) =>{
 };
 
 
-router.get('/board', isLoggedIn, usersCtrl.board);
-router.get('/dashboard', isLoggedIn, usersCtrl.dash);
+router.get('/board', isLoggedIn, questionsCtrl.board);
+router.get('/dashboard', isLoggedIn, questionsCtrl.dash);
+router.get('/edit/:id', isLoggedIn, questionsCtrl.edit);
+// router.get('/')
 
+router.delete('/questions/:id', isLoggedIn, questionsCtrl.delQuestion);
+router.post('/questions', isLoggedIn, questionsCtrl.addQuestion);
+router.post('/board/:id/answer', isLoggedIn, questionsCtrl.addAns);
 
-router.delete('/questions/:id', isLoggedIn, usersCtrl.delQuestion);
-router.post('/questions', isLoggedIn, usersCtrl.addQuestion);
-router.post('/board/:id/answer', isLoggedIn, usersCtrl.addAns);
 
 module.exports = router;
 
