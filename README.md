@@ -9,6 +9,9 @@ Technologies Used
 * Mongo DB
 * Express
 * Mongoose
+* Facebook Oauth
+* Google Oauth
+* Heroku
 
 [Trello Board](https://trello.com/b/urfF3udP)
 
