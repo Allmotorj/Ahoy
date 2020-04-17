@@ -18,7 +18,6 @@ function board(req, res, next) {
   User.find(modQuery)
   .populate('questions')
   .exec(function(err, users){
-    console.log(users);
     res.render("questions/board", {
       users,
       user: req.user,
@@ -39,21 +38,36 @@ function addQuestion(req, res, next){
     })
 }
 
-
-
 function delQuestion(req, res) {
   Question.findByIdAndRemove(req.params.id, function(err) {
       res.redirect('/questions/dashboard');
   });
 }
 
-function edit(req, res) {
-  res.render('/questions/edit');
+function update(req, res) {
+  Question.findByIdAndUpdate(req.params.id, req.body, function(err, question){
+    console.log(question)
+    console.log(req.body)
+      res.redirect('/questions/dashboard');
+    
+  })
+}
+
+function editShow(req, res, next) {
+  User.findById(req.user._id)
+  .populate('questions')
+  .exec(function(err, user){
+    res.render('dashboard/edit', { 
+      user,
+      title: 'Ahoy'
+  } )
+  })
+  
 }
 
 const addAns = (req, res) => {
-  console.log("req id", req.user.id)
     req.body.user = req.user.id
+    console.log("req.bodyUser", req.body.user)
   Question.findById(req.params.id, function(err, question) {
       req.body.userName = req.user.name
       question.answers.push(req.body);
@@ -71,5 +85,6 @@ module.exports = {
     delQuestion,
     addQuestion,
     addAns,
-    edit
+    editShow,
+    update
 }

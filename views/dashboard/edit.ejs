@@ -3,7 +3,7 @@
     <div class="navbar-fixed">
         <nav>
           <div class="nav-wrapper green lighten-1">
-            <a href="/questions/board" class="brand-logo left">Dashboard</a>
+            <a href="/questions/dashboard" class="brand-logo left">User Dashboard</a>
           <ul class="right">
             <li>
                 <% if (user) { %>
@@ -24,31 +24,30 @@
               <div>
                 <span class="card-title">
                   <i class="small material-icons">perm_identity</i>
-                  <span class="student-name"><%= user.name %></span>
+                  <span class="student-name"><%= "Edit Questions" %></span>
                   
                 </span>
               </div>
               <ul class="collection ">
-                <% user.questions.forEach(function(ques) { %>
-                <li class="collection-item blue-grey-text text-darken-2">
+                <% user.questions.forEach(function(ques) { %>  
+                  <li class="collection-item blue-grey-text text-darken-2">
+                  <br>
                   <span class="title"><%- ques.text %></span>
                   <% if (user._id.equals(user && user._id)) { %>
-                  <a href="/questions/edit" class="right">Edit</a>
-                  <form action="/questions/<%= ques._id %>?_method=DELETE" method="POST" class="secondary-content">
-                  <button type="submit" class="btn-small red-text">X</button></li>
+                    <form action="/questions/<%= ques._id %>?_method=PUT" method="POST" class="secondary-content">
+                      <div class="valign-wrapper right">
+                      <input type="text" name="text" value="<%= 'Update' %>">
+                    <button type="submit" class="btn-small white-text right">submit</button>
+                  </div>
+                </li>
                 </form>
                 <% } %>
+            
               </li>
+              
                 <% }) %>
               </ul>
-              <% if (user._id.equals(user && user._id)) { %>
-                <div class="card-action">
-                  <form action="/questions/questions" method="POST">
-                    <input type="text" name="text" class="white-text">
-                    <button type="submit" class="btn white-text">Add Question</button>
-                  </form>
-                </div>
-              <% } %>
+          
             </div>
           </div>   
 

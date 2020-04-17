@@ -15,7 +15,6 @@ require("./config/database");
 require("./config/passport");
 
 var indexRouter = require('./routes/index');
-// var usersRouter = require('./routes/users');
 var questionsRouter = require('./routes/questions')
 
 // view engine setup
@@ -39,7 +38,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', indexRouter);
-// app.use('/users', usersRouter);
 app.use('/questions', questionsRouter);
 
 
