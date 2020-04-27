@@ -15,9 +15,9 @@ Technologies Used
 
 [Link to live app](https://blooming-brushlands-23099.herokuapp.com/)
 
-[Trello Board](https://trello.com/b/urfF3udP)
+[Trello Board](https://trello.com/b/urfF3udP.png)
 
-![User Questions](https://imgur.com/mz32cro)
+![User Questions](https://imgur.com/mz32cro.png)
 
 ![Discussion Board where the community answers questions](https://imgur.com/a/qn7XZov)
 
