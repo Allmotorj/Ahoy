@@ -15,11 +15,11 @@ Technologies Used
 
 [Link to live app](https://blooming-brushlands-23099.herokuapp.com/)
 
-[Trello Board](https://trello.com/b/urfF3udP.png)
+[Trello Board](https://trello.com/b/urfF3udP)
 
 ![User Questions](https://imgur.com/mz32cro.png)
 
-![Discussion Board where the community answers questions](https://imgur.com/a/qn7XZov)
+![Discussion Board where the community answers questions](https://imgur.com/a/qn7XZov.png)
 
 Icebox Features
 * Implement random user/question generator
