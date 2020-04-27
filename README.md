@@ -19,7 +19,7 @@ Technologies Used
 
 ![User Questions](https://imgur.com/mz32cro.png)
 
-![Discussion Board where the community answers questions](https://imgur.com/qn7XZov.png)
+![Discussion Board where the community answers questions](https://i.imgur.com/kYfGe4g.png)
 
 Icebox Features
 * Implement random user/question generator
