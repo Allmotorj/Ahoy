@@ -22,12 +22,8 @@ jobs:
           npm pkg set dependencies.morgan='~1.12.0'
           npm install --package-lock-only --ignore-scripts --no-audit --no-fund --legacy-peer-deps
       - name: Verify Morgan
-        shell: node {0}
         run: |
-          const lock = require('./package-lock.json');
-          const v = lock.packages?.['node_modules/morgan']?.version;
-          if (!v || !/^1\.12\./.test(v)) throw new Error(`Unexpected morgan version: ${v}`);
-          console.log(`morgan=${v}`);
+          node -e "const lock=require('./package-lock.json'); const v=lock.packages?.['node_modules/morgan']?.version; if(!v || !/^1\\.12\\./.test(v)){throw new Error('Unexpected morgan version: '+v)}; console.log('morgan='+v)"
       - name: Commit refreshed manifest and lockfile
         run: |
           git config user.name "github-actions[bot]"
